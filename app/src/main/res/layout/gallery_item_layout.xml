@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="uiModel"
+            type="com.example.hedgehoglabapp.model.pexelsitems.PexelsImagesItemUiModel" />
+
+        <variable
+            name="listener"
+            type="com.example.hedgehoglabapp.ui.main.OpenItemListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="@{() -> listener.openItem(uiModel)}">
+
+        <ImageView
+            android:id="@+id/galleryImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setImageFromUrl="@{uiModel.imageLarge}"
+            android:src="@drawable/ic_launcher_background"/>
+
+        <TextView
+            android:id="@+id/galleryItemTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{uiModel.imageCreator}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/galleryImage" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="uiModel"
+            type="com.example.hedgehoglabapp.model.pexelsitems.PexelsImagesItemUiModel" />
+
+        <variable
+            name="listener"
+            type="com.example.hedgehoglabapp.ui.details.AddRemoveItemListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.details.DetailsFragment">
+
+        <LinearLayout
+            android:id="@+id/viewpager_container"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/itemimage"
+                app:setImageFromUrl="@{uiModel.imageLarge}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/postDetailsAndActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewpager_container">
+
+            <TextView
+                android:id="@+id/postTitle"
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{uiModel.imageDescription}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/postCreator"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{uiModel.imageCreator}"
+                android:textColor="@android:color/holo_green_light" />
+        </LinearLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addToFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/addtofavouritesbtn"
+            android:onClick="@{() -> listener.addItemToFavorites(uiModel)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:setActionBtnIcon="@{uiModel.itemIsLiked}"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/addtofavouritesbtn"
+            android:onClick="@{() -> listener.removeItemFromFavorites(uiModel)}"
+            android:src="@drawable/ic_baseline_delete_forever_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addToFavorites"
+            app:tint="@color/white"
+            app:visibleGone="@{uiModel.itemIsLiked}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
