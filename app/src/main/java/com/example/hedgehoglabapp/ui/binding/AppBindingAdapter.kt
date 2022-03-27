@@ -22,7 +22,7 @@ object AppBindingAdapter {
         view: ImageView,
         image: String?
     ) {
-        image.takeIf { !it.isNullOrEmpty() }?.let {
+        image?.let {
             Glide.with(view.context)
                 .load(it)
                 .into(view)

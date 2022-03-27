@@ -52,7 +52,6 @@ class DetailsViewModel @Inject constructor(
                     imageId = it.imageId,
                     imageUrl = it.imageUrl ?: "",
                     imageCreator = it.imageCreator ?: "",
-                    imageLarge = it.imageUrl ?: "",
                     imageDescription = it.imageDescription ?: ""
                 ).apply {
                     itemIsLiked = true
@@ -75,7 +74,7 @@ class DetailsViewModel @Inject constructor(
             detailsRepository.addItem(
                 PexelsImagesItemEntity(
                     imageId = item.imageId,
-                    imageUrl = item.imageLarge,
+                    imageUrl = item.imageUrl,
                     imageCreator = item.imageCreator,
                     imageDescription = item.imageDescription
                 )
@@ -84,7 +83,6 @@ class DetailsViewModel @Inject constructor(
                 imageId = item.imageId,
                 imageUrl = item.imageUrl,
                 imageCreator = item.imageCreator,
-                imageLarge = item.imageLarge,
                 imageDescription = item.imageDescription
             )?.apply {
                 itemIsLiked = true
@@ -105,7 +103,6 @@ class DetailsViewModel @Inject constructor(
                 imageId = item.imageId,
                 imageUrl = item.imageUrl,
                 imageCreator = item.imageCreator,
-                imageLarge = item.imageLarge,
                 imageDescription = item.imageDescription
             )?.apply {
                 itemIsLiked = false

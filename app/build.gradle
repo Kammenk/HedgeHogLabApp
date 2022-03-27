@@ -17,6 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "PEXELS_API_KEY", "\"563492ad6f91700001000001a05302a407ed4be48fee865ab5ae309a\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

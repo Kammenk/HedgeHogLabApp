@@ -23,6 +23,5 @@ fun PexelsImagesItemEntity.convertToUiModel() = PexelsImagesItemUiModel(
     imageId = imageId,
     imageUrl = imageUrl ?: "",
     imageCreator = imageCreator ?: "",
-    imageLarge = imageUrl ?: "",
     imageDescription = imageDescription ?: ""
 )

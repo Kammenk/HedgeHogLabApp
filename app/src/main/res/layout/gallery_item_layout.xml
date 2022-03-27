@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setImageFromUrl="@{uiModel.imageLarge}"
+            app:setImageFromUrl="@{uiModel.imageUrl}"
             android:src="@drawable/ic_launcher_background"/>
 
         <TextView
