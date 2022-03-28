@@ -8,8 +8,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hedgehoglabapp.R
-import com.example.hedgehoglabapp.model.pexelsitems.PexelsImagesItemEntity
 import com.example.hedgehoglabapp.model.pexelsitems.PexelsImagesItemUiModel
+import com.example.hedgehoglabapp.model.pexelsitems.convertToEntity
 import com.example.hedgehoglabapp.repository.details.DetailsRepository
 import com.example.hedgehoglabapp.ui.dialog.CustomDialog
 import com.example.hedgehoglabapp.ui.dialog.RemoveItemAlertDialog
@@ -71,14 +71,7 @@ class DetailsViewModel @Inject constructor(
             return
         }
         viewModelScope.launch {
-            detailsRepository.addItem(
-                PexelsImagesItemEntity(
-                    imageId = item.imageId,
-                    imageUrl = item.imageUrl,
-                    imageCreator = item.imageCreator,
-                    imageDescription = item.imageDescription
-                )
-            )
+            detailsRepository.addItem(item.convertToEntity())
             _uiModelLiveData.value = _uiModelLiveData.value?.copy(
                 imageId = item.imageId,
                 imageUrl = item.imageUrl,

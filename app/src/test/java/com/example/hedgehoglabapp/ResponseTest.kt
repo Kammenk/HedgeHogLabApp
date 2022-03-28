@@ -30,12 +30,7 @@ class ResponseTest {
                 url = "https://www.pexels.com/photo/elegant-woman-in-black-dress-with-hands-clasped-11543979/",
                 creator = "ph.galtri",
                 imageSizeList = SizeImages(
-                    originalSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg",
                     largeSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-                    mediumSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=350",
-                    smallSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=130",
-                    portraitSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-                    landscapeSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
                 ),
                 description = "Woman in Black Button Up Shirt"
             ),
@@ -44,12 +39,7 @@ class ResponseTest {
                 url = "https://www.pexels.com/photo/elegant-woman-in-black-dress-with-hands-clasped-11543979/",
                 creator = "ph.galtri",
                 imageSizeList = SizeImages(
-                    originalSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg",
                     largeSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-                    mediumSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=350",
-                    smallSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=130",
-                    portraitSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-                    landscapeSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
                 ),
                 description = "Woman in Black Button Up Shirt"
             ),
@@ -58,12 +48,7 @@ class ResponseTest {
                 url = "https://www.pexels.com/photo/elegant-woman-in-black-dress-with-hands-clasped-11543979/",
                 creator = "ph.galtri",
                 imageSizeList = SizeImages(
-                    originalSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg",
                     largeSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-                    mediumSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=350",
-                    smallSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&h=130",
-                    portraitSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-                    landscapeSize = "https://images.pexels.com/photos/11543979/pexels-photo-11543979.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
                 ),
                 description = "Woman in Black Button Up Shirt"
             )

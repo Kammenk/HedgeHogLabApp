@@ -1,5 +1,6 @@
 package com.example.hedgehoglabapp.ui.favorites
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -90,8 +91,12 @@ class FavoritesViewModel @Inject constructor(
     private fun removeAllItems() {
         viewModelScope.launch {
             detailsRepository.deleteAll()
-            _customSnackBarLiveData.value = CustomSnackBar(R.string.items_removed)
+            showSnackBar(R.string.items_removed)
         }
+    }
 
+    @VisibleForTesting
+    fun showSnackBar(message: Int) {
+        _customSnackBarLiveData.value = CustomSnackBar(message)
     }
 }

@@ -35,51 +35,48 @@
             app:spanCount="2"
             app:visibleGone="@{!uiModel.showMainLoader}"
             tools:itemCount="6"
-            tools:listitem="@layout/gallery_item_layout"/>
+            tools:listitem="@layout/gallery_item_layout" />
 
         <ProgressBar
             android:id="@+id/mainProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/gallerySearchView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:visibleGone="@{uiModel.showMainLoader}"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gallerySearchView"
+            app:visibleGone="@{uiModel.showMainLoader}" />
 
         <ProgressBar
             android:id="@+id/secondaryProgressBar"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:visibleGone="@{uiModel.showBottomLoader}"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:visibleGone="@{uiModel.showBottomLoader}" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:visibleGone="@{uiModel.galleryItemList.empty &amp;&amp; !uiModel.showMainLoader}">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No results found."
-                />
+                android:text="No results found." />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_baseline_mood_bad_24"
-                />
+                android:contentDescription="@string/noresultsimage"
+                android:src="@drawable/ic_baseline_mood_bad_24" />
 
         </LinearLayout>
 

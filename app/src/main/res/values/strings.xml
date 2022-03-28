@@ -23,4 +23,7 @@
     <string name="item_added">Item saved.</string>
     <string name="item_removed">Item removed.</string>
     <string name="items_removed">Items have been removed.</string>
+    <string name="no_results_found">No results found.</string>
+    <string name="noresultsimage">noresultsimage</string>
+    <string name="galleryimage">galleryimage</string>
 </resources>

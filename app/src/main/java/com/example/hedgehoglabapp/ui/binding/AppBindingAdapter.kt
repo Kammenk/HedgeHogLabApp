@@ -25,6 +25,7 @@ object AppBindingAdapter {
         image?.let {
             Glide.with(view.context)
                 .load(it)
+                .placeholder(R.drawable.ic_baseline_broken_image_24)
                 .into(view)
         }
 

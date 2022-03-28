@@ -1,10 +1,10 @@
 package com.example.hedgehoglabapp.ui.main
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hedgehoglabapp.R
 import com.example.hedgehoglabapp.model.GalleryUiModel
@@ -15,6 +15,7 @@ import com.example.hedgehoglabapp.repository.gallery.GalleryRepository
 import com.example.hedgehoglabapp.ui.snackbar.CustomSnackBar
 import com.example.hedgehoglabapp.utils.SingleLiveEvent
 import com.example.hedgehoglabapp.utils.isNetworkConnected
+import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -22,9 +23,9 @@ import retrofit2.Response
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    application: Application,
+    private val application: Application,
     private val galleryRepository: GalleryRepository
-) : AndroidViewModel(application), LifecycleObserver, OpenItemListener {
+) : ViewModel(), LifecycleObserver, OpenItemListener {
 
     private var _uiModelLiveData = MediatorLiveData<GalleryUiModel>().apply {
         value = GalleryUiModel(
@@ -52,8 +53,9 @@ class HomeViewModel @Inject constructor(
     private var currentQuery = ""
 
     init {
-        if (!getApplication<Application>().isNetworkConnected()) {
-            _customSnackBarLiveData.value = CustomSnackBar(R.string.no_connection)
+        if (!getApplication(application).isNetworkConnected()) {
+            showSnackBar(R.string.no_connection)
+            changeLoadingState(false)
         } else {
             changeLoadingState(true)
             getCuratedImages(DEFAULT_PAGE, DEFAULT_PAGE_SIZE)
@@ -77,7 +79,7 @@ class HomeViewModel @Inject constructor(
         when {
             response.isSuccessful && response.body() != null -> {
                 response.body()?.images?.let { galleryList ->
-                    galleryList.map { it.convertToUiModel(getApplication()) }.let { convertedGalleryList ->
+                    galleryList.map { it.convertToUiModel() }.let { convertedGalleryList ->
                         resultList.addAll(convertedGalleryList)
                         val finalList =
                             mutableListOf<PexelsImagesItemUiModel>().apply { this.addAll(resultList) }
@@ -89,13 +91,17 @@ class HomeViewModel @Inject constructor(
                 }
             }
             else -> {
-                _customSnackBarLiveData.value = CustomSnackBar(R.string.general_error)
+                showSnackBar(R.string.general_error)
             }
         }
         changeLoadingState(false)
     }
 
     fun searchImages(query: String) {
+        if (!getApplication(application).isNetworkConnected()) {
+            showSnackBar(R.string.no_connection)
+            return
+        }
         // clear all previous request data
         // before calling the search endpoint
         resultList.clear()
@@ -117,7 +123,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun onScrollAction() {
-        if (hasNextPage == true) {
+        if (getApplication(application).isNetworkConnected() && hasNextPage == true) {
             hasNextPage = false
             indexReached += DEFAULT_PAGE
             changeLoadingState(mainLoaderState = false, bottomLoaderState = true)
@@ -136,5 +142,9 @@ class HomeViewModel @Inject constructor(
 
     override fun openItem(item: PexelsImagesItemUiModel) {
         _navigationLiveData.value = item
+    }
+
+    private fun showSnackBar(message: Int) {
+        _customSnackBarLiveData.value = CustomSnackBar(message)
     }
 }

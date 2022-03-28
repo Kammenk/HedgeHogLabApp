@@ -1,8 +1,5 @@
 package com.example.hedgehoglabapp.model.pexelsitems
 
-import android.content.Context
-import android.provider.Settings.Global.getString
-import com.example.hedgehoglabapp.R
 import com.google.gson.annotations.SerializedName
 
 data class PexelsImage(
@@ -18,9 +15,9 @@ data class PexelsImage(
     val description: String?
 )
 
-fun PexelsImage.convertToUiModel(context: Context) = PexelsImagesItemUiModel(
+fun PexelsImage.convertToUiModel() = PexelsImagesItemUiModel(
     imageId = id ?: 0,
     imageUrl = imageSizeList?.largeSize ?: url ?: "",
-    imageCreator = context.getString(R.string.creator_name, creator),
+    imageCreator = creator ?: "",
     imageDescription = description ?: ""
 )

@@ -1,7 +1,7 @@
 package com.example.hedgehoglabapp.model.pexelsitems
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PexelsImagesItemUiModel(
@@ -12,3 +12,10 @@ data class PexelsImagesItemUiModel(
 ): Parcelable {
     var itemIsLiked: Boolean = false
 }
+
+fun PexelsImagesItemUiModel.convertToEntity() = PexelsImagesItemEntity(
+    imageId = imageId,
+    imageUrl = imageUrl,
+    imageCreator = imageCreator,
+    imageDescription = imageDescription
+)
